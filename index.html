@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&family=Open+Sans:wght@300&family=Oranienbaum&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="./js/script.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <h2 class="title">
+          Получить <span style="color: #ffe99c">план вывода</span> компании из
+          кризиса
+        </h2>
+        <div class="quez">
+          <span class="quez__text"
+            >Осталось вопросов: <time id="last">5</time> из 5</span
+          >
+          <div class="progress__bar">
+            <progress value="0" max="100" id="progress"></progress>
+          </div>
+          <div class="quez__items">
+            <form class="quez__form">
+              <h2 class="title title__main"></h2>
+              <div class="quez__item">
+                <input type="radio" class="quez__radio" id="rad1" name="rad" />
+                <label class="quez__label" for="rad1">Банковская сфера</label>
+              </div>
+              <div class="quez__item">
+                <input type="radio" class="quez__radio" id="rad2" name="rad" />
+                <label class="quez__label" for="rad2">Авиация</label>
+              </div>
+              <div class="quez__item">
+                <input type="radio" class="quez__radio" id="rad3" name="rad" />
+                <label class="quez__label" for="rad3"
+                  >Военно-промышленный комплекс</label
+                >
+              </div>
+              <div class="quez__item">
+                <input type="radio" class="quez__radio" id="rad4" name="rad" />
+                <label class="quez__label" for="rad4">Торговля</label>
+              </div>
+              <div class="quez__item quez__last">
+                <input type="radio" class="quez__radio" id="rad5" name="rad" />
+                <label class="quez__label" for="rad5">Другое</label>
+              </div>
+              <div class="btn__group">
+                <button type="submit" class="btn">Следующий вопрос</button>
+                <div class="last__ques">Предыдущий вопрос</div>
+              </div>
+            </form>
+            <div class="quez__text quez__phrase">
+              <p>Каждый бизнес индивидуален и требует персонального подхода.</p>
+              <p>
+                Порядок действий разработан юристами, экономистами, арбитражными
+                и управляющими.
+              </p>
+              <p>
+                Ответив на несколько вопросов, вы получите индивидуальный план
+                антикризисных мероприятий.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
