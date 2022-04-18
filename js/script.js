@@ -95,7 +95,7 @@ const onModal = (e) => {
   const btnEl = document.createElement("button");
   btnEl.type = "button";
   btnEl.classList.add("btn__again");
-  btnEl.textContent = "Начать заново";
+  btnEl.textContent = "Пройти заново";
   document.querySelector(".quez").append(btnEl);
   document.querySelector(".btn__again").onclick = () => {
     window.location.reload();
