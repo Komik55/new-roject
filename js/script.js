@@ -62,12 +62,14 @@ const createElements = (elem) => {
 
 createElements(questions);
 
+let k = 5;
 const onPrev = () => {
   count--;
   i++;
-  if (i > questions.length) return;
-  if (i >= 5) {
+  if (i >= 4) {
     __lastBtn.style.display = "none";
+    k -= 1;
+    last.textContent = k;
   }
   last.textContent = i;
   progress.value -= 20;
@@ -87,6 +89,17 @@ const onModal = (e) => {
   const h = document.createElement("h2");
   h.textContent =
     "Спасибо, мы получили всю необходимую информацию. План вывода компании из кризиса будет направлен вам по указанному адресу.";
+  h.classList.add("title");
+  h.classList.add("thanks");
+  document.querySelector(".quez").append(h);
+  const btnEl = document.createElement("button");
+  btnEl.type = "button";
+  btnEl.classList.add("btn__again");
+  btnEl.textContent = "Начать заново";
+  document.querySelector(".quez").append(btnEl);
+  document.querySelector(".btn__again").onclick = () => {
+    window.location.reload();
+  };
 };
 
 const contacts = () => {
