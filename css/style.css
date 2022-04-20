@@ -203,6 +203,9 @@ input[type="radio"]:checked::before {
   font-weight: 400;
   color: #fff;
 }
+.last-btn-block::after {
+  display: none;
+}
 input[type="text"]:not(.input-radio) {
   color: #fff;
   padding-left: 20px;
@@ -458,6 +461,7 @@ input[type="text"]:not(.input-radio) {
   .btn {
     width: 250px;
   }
+
   .btn__block::after {
     width: 97%;
   }

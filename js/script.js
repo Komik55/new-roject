@@ -153,6 +153,7 @@ const contacts = () => {
   __btn.remove();
   const btnBlock = document.createElement("div");
   btnBlock.classList.add("btn__block");
+  btnBlock.classList.add("last-btn-block");
   btnBlock.style.marginRight = "35px";
   const butEl = document.createElement("button");
   butEl.type = "submit";
