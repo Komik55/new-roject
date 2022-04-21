@@ -8,7 +8,7 @@ body {
   width: 100%;
 }
 body {
-  padding: 30px 0;
+  padding: 70px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,6 @@ body::after {
   background: linear-gradient(0deg, #2a2a2c 0%, rgba(45, 45, 47, 0) 100%);
   height: 100%;
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -48,7 +47,11 @@ body::after {
 .title__mobile {
   display: none;
 }
-
+.last-btn-elem,
+.btn__sub {
+  margin-top: 20px;
+  margin-right: 35px;
+}
 .progress__bar progress,
 progress::-webkit-progress-bar {
   transition: 0.6s;
@@ -57,14 +60,13 @@ progress::-webkit-progress-bar {
   background: #1a191f;
 }
 progress::-webkit-progress-value {
-  background: linear-gradient(
+  background-image: linear-gradient(
     180deg,
     #fff1bf -65%,
     #ffefb7 32.02%,
     #ffd950 126.31%
   );
-
-  border-radius: 20px;
+  border-radius: 29px;
 }
 
 .quez {
@@ -76,7 +78,9 @@ progress::-webkit-progress-value {
   background: rgba(37, 36, 41, 0.75);
   backdrop-filter: blur(3px);
   border-radius: 10px;
-  padding: 20px 30px;
+  padding: 0px 50px;
+  padding-top: 30px;
+  padding-bottom: 55px;
 }
 .quez__text {
   opacity: 0.5;
@@ -251,18 +255,16 @@ input[type="text"]:not(.input-radio) {
   background-size: cover;
   position: relative;
 }
-.btn:hover,
-.btn__sub:hover {
-  transition: 0.4s;
-  filter: brightness(90%);
-}
-.btn__block {
+
+button {
   position: relative;
 }
-.btn__block::after {
+button::after {
   content: "";
   width: 317px;
+  z-index: -10;
   height: 20px;
+  left: 0;
   transform: translateX(4px);
   position: absolute;
   bottom: -7px;
@@ -270,6 +272,7 @@ input[type="text"]:not(.input-radio) {
   background-color: #af9b55;
   border-radius: 9px;
 }
+
 .quez__item {
   display: flex;
   align-items: center;
@@ -317,8 +320,48 @@ input[type="text"]:not(.input-radio) {
   margin: 20px 0;
 }
 .not-width {
-  width: 100%;
+  width: 98%;
 }
+
+@media screen and (min-width: 1500px) {
+  .container {
+    width: 1200px;
+  }
+  .quez__item {
+    width: 600px;
+  }
+  .top {
+    gap: 10%;
+    justify-content: center;
+  }
+  .quez__text p {
+    width: 500px;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .container {
+    width: 1300px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .container {
+    width: 1400px;
+  }
+}
+@media screen and (min-width: 2100px) {
+  .quez {
+    height: 800px;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .container {
+    width: 1800px;
+  }
+  .quez {
+    height: 900px;
+  }
+}
+
 @media screen and (max-width: 1080px) {
   .container {
     align-items: center;
@@ -461,10 +504,10 @@ input[type="text"]:not(.input-radio) {
   .btn {
     width: 250px;
   }
-
-  .btn__block::after {
+  button::after {
     width: 97%;
   }
+
   .quez__form {
     width: 100%;
   }

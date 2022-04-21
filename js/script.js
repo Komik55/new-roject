@@ -58,7 +58,6 @@ const createElements = (elem) => {
   }`;
   for (let i = 0; i < __labels.length; i++) {
     __labels[i].textContent = elem[count].choices[i];
-
     if (__labels[i].textContent === "") __labels[i].parentElement.remove();
   }
   if (count > 0) {
@@ -79,12 +78,28 @@ const createElements = (elem) => {
 createElements(questions);
 
 let k = 5;
+const onLastElements = () => {
+  const inputs = document.querySelectorAll(".inps");
+  inputs.forEach((e) => e.remove());
+  document.querySelector(".text__light").remove();
+  document.querySelector(".btn__sub").remove();
+  const button = document.createElement("button");
+  button.classList.add("btn");
+  button.classList.add("last-btn-elem");
+  button.textContent = "Следующий вопрос";
+  button.addEventListener("click", onNext);
+  document.querySelector(".btn__group").append(button);
+  __labels.forEach(
+    (e, i) => (
+      (e.parentElement.style.display = "block"),
+      console.log(e.parentElement.textContent + i)
+    )
+  );
+};
+
 const onPrev = () => {
-  const radios = document.querySelectorAll(".quez__radio");
-  radios.forEach((e) => {
-    console.log(e);
-  });
-  count--;
+  count >= 5 && onLastElements();
+  count -= 1;
   i++;
   if (i >= 4) {
     __lastBtn.style.display = "none";
@@ -93,7 +108,6 @@ const onPrev = () => {
   }
   last.textContent = i;
   progress.value -= 20;
-
   createElements(questions);
 };
 __lastBtn.addEventListener("click", onPrev);
@@ -112,15 +126,13 @@ const onModal = (e) => {
   h.classList.add("title");
   h.classList.add("thanks");
   document.querySelector(".quez").append(h);
-  const btnBlock = document.createElement("div");
-  btnBlock.classList.add("btn__block");
   const btnEl = document.createElement("button");
   btnEl.type = "button";
   btnEl.classList.add("btn");
   btnEl.classList.add("btn__again");
   btnEl.textContent = "Пройти заново";
   btnEl.classList.add("btn__after");
-  btnBlock.append(btnEl);
+  document.querySelector(".btn__group").append(btnEl);
   document.querySelector(".quez").style.gap = "60px";
   document.querySelector(".quez").style.justifyContent = "center";
   document.querySelector(".quez").style.alignItems = "center";
@@ -131,9 +143,12 @@ const onModal = (e) => {
 };
 
 const contacts = () => {
+  if (document.querySelector(".btn").classList.contains("last-btn-elem")) {
+    document.querySelector(".last-btn-elem").remove();
+  }
   document.querySelector(".title__main").textContent = "Ваши контактные данные";
   __labels.forEach((el) => {
-    el.parentElement.remove();
+    el.parentElement.style.display = "none";
   });
   const list = ["Как к вам обращаться", "Ваш номер телефона", "Ваш E-mail*"];
   for (let i = 0; i < 3; i += 1) {
@@ -151,36 +166,26 @@ const contacts = () => {
   elDiv.textContent = "*Поля со звездочкой обыязятельны для заполнения";
   document.querySelector(".quez__form").appendChild(elDiv);
   __btn.remove();
-  const btnBlock = document.createElement("div");
-  btnBlock.classList.add("btn__block");
-  btnBlock.classList.add("last-btn-block");
-  btnBlock.style.marginRight = "35px";
   const butEl = document.createElement("button");
   butEl.type = "submit";
   butEl.textContent = "Отправить";
   butEl.classList.toggle("btn");
   butEl.classList.toggle("btn__sub");
   butEl.style.order = 1;
-  btnBlock.append(butEl);
   butEl.addEventListener("click", onModal);
   __lastBtn.style.order = 2;
   document.querySelector(".btn__group").style.marginTop = "-10px";
   document.querySelector(".btn__group").style.gap = "0px";
-  document.querySelector(".btn__group").append(btnBlock);
+  document.querySelector(".btn__group").append(butEl);
   document.querySelector(".btn__group").style.order = 2;
 };
 
 const onNext = (e) => {
   e.preventDefault();
-  const radios = document.querySelectorAll(".quez__radio");
-  radios.forEach((e) => {
-    e.checked = false;
-    console.log(e.checked);
-  });
   i -= 1;
   count++;
   last.textContent = i;
-  if (i === 0) i = 5;
+  if (i >= 5) i--;
   progress.value += 20;
   if (count >= 5) {
     contacts();
